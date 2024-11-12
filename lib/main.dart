@@ -1,91 +1,15 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:bloc/bloc.dart';
+import 'package:bloc_course/bloc/bloc_actions.dart';
+import 'package:bloc_course/bloc/person_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+import 'bloc/person.dart';
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-@immutable
-abstract class LoadAction {
-  const LoadAction();
-}
-
-@immutable
-class LoadPersonsAction implements LoadAction {
-  final PersonsUrl url;
-
-  const LoadPersonsAction(this.url) : super();
-}
-
-@immutable
-class FetchResults {
-  final Iterable<Person> persons;
-  final bool isCached;
-
-  const FetchResults({
-    required this.persons,
-    required this.isCached,
-  });
-
-  @override
-  String toString() => 'FetchResults{persons: $persons, isCached: $isCached}';
-}
-
-class PersonBloc extends Bloc<LoadAction, FetchResults?> {
-  final Map<PersonsUrl, Iterable<Person>> _cache = {};
-  PersonBloc() : super(null) {
-    on<LoadPersonsAction>(
-      (event, emit) async {
-        final personUrl = event.url;
-        if (_cache.containsKey(personUrl)) {
-          final cachedPersons = _cache[personUrl]!;
-          final result = FetchResults(persons: cachedPersons, isCached: true);
-          emit(result);
-        } else {
-          final persons = await getPersons(personUrl.url);
-          _cache[personUrl] = persons;
-          final result = FetchResults(
-            persons: persons,
-            isCached: false,
-          );
-          emit(result);
-        }
-      },
-    );
-  }
-}
-
-@immutable
-class Person {
-  final String name;
-  final int age;
-
-  const Person({required this.name, required this.age});
-
-  Person.fromJson(Map<String, dynamic> json)
-      : name = json['name'] as String,
-        age = json['age'] as int;
-
-  @override
-  String toString() => 'Person{name: $name, age: $age}';
-}
-
-// These url are served through a separate server not included in this project
-// The server is a simple server that returns a json response with a person's name and age
-enum PersonsUrl {
-  person1("http://10.0.2.2:8000/p1"),
-  person2("http://10.0.2.2:8000/p2");
-
-  const PersonsUrl(this.url);
-  final String url;
-}
+const person1Url = "10.0.2.2:8000/p1";
+const person2Url = "10.0.2.2:8000/p2";
 
 Future<Iterable<Person>> getPersons(String url) => HttpClient()
     .getUrl(Uri.parse(url))
@@ -116,6 +40,13 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -160,16 +91,22 @@ class _HomePageState extends State<HomePage> {
             children: [
               ElevatedButton(
                   onPressed: () {
-                    context
-                        .read<PersonBloc>()
-                        .add(const LoadPersonsAction(PersonsUrl.person1));
+                    context.read<PersonBloc>().add(
+                          const LoadPersonsAction(
+                            url: person1Url,
+                            loader: getPersons,
+                          ),
+                        );
                   },
                   child: const Text("Load person 1")),
               ElevatedButton(
                   onPressed: () {
-                    context
-                        .read<PersonBloc>()
-                        .add(const LoadPersonsAction(PersonsUrl.person2));
+                    context.read<PersonBloc>().add(
+                          const LoadPersonsAction(
+                            url: person2Url,
+                            loader: getPersons,
+                          ),
+                        );
                   },
                   child: const Text("Load person 2")),
             ],
