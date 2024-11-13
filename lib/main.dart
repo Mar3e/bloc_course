@@ -8,8 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc/person.dart';
 
-const person1Url = "10.0.2.2:8000/p1";
-const person2Url = "10.0.2.2:8000/p2";
+const person1Url = "http://10.0.2.2:8000/p1";
+const person2Url = "http://10.0.2.2:8000/p2";
 
 Future<Iterable<Person>> getPersons(String url) => HttpClient()
     .getUrl(Uri.parse(url))
