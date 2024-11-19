@@ -12,6 +12,7 @@ abstract class NotesApiProtocol {
 
 @immutable
 class NotesApi implements NotesApiProtocol {
+  const NotesApi();
   @override
   Future<Iterable<Note>?> getNotes({
     required LoginHandle loginHandle,

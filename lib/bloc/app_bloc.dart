@@ -4,7 +4,6 @@ import 'package:bloc_course/apis/notes_api.dart';
 import 'package:bloc_course/bloc/actions.dart';
 import 'package:bloc_course/bloc/app_state.dart';
 import 'package:bloc_course/models.dart';
-import 'package:bloc_course/strings.dart';
 
 class AppBloc extends Bloc<AppAction, AppState> {
   final LoginApiProtocol loginApi;
