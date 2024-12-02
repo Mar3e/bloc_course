@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "659001732177",
+    "project_id": "global-gallery-fe0d1",
+    "storage_bucket": "global-gallery-fe0d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659001732177:android:95d8f76db7d4b9f5239c70",
+        "android_client_info": {
+          "package_name": "com.MareaiBinTaleb.global_gallery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "659001732177-is1ip0ftaefr2pif9cjrijhvau11o6f7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQYNxpa5C8PlFkeF3sGCOhWDIy1IaMQ2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "659001732177-is1ip0ftaefr2pif9cjrijhvau11o6f7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "659001732177-kpejcfkrqvjthlsgski22oft3mjae9me.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.MareaiBinTaleb.globalGallery"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659001732177:android:acb9997268e73747239c70",
+        "android_client_info": {
+          "package_name": "com.example.blocphoto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "659001732177-is1ip0ftaefr2pif9cjrijhvau11o6f7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQYNxpa5C8PlFkeF3sGCOhWDIy1IaMQ2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "659001732177-is1ip0ftaefr2pif9cjrijhvau11o6f7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "659001732177-kpejcfkrqvjthlsgski22oft3mjae9me.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.MareaiBinTaleb.globalGallery"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
